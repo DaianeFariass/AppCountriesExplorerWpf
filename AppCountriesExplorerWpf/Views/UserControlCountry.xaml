@@ -1,0 +1,101 @@
+﻿<UserControl x:Class="AppCountriesExplorerWpf.Views.UserControlCountry"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AppCountriesExplorerWpf.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" 
+             d:DesignWidth="1400"
+             Background="#1C2F3E">
+    <Grid>
+        <!--Grid Center Designer-->
+        <Grid Margin="27,77,103,10">
+            <Grid.Background>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}"/>
+            </Grid.Background>
+            <Label Content="Name:" HorizontalAlignment="Left" Margin="29,26,0,0" VerticalAlignment="Top" Width="116" FontFamily="Verdana" FontSize="14" FontWeight="Bold" Height="27"/>
+            <Label Content="Link Flag:" HorizontalAlignment="Left" Margin="29,313,0,0" VerticalAlignment="Top" Width="116" FontFamily="Verdana" FontSize="14" FontWeight="Bold"/>
+            <Label Content="Gini Index:" HorizontalAlignment="Left" Margin="29,263,0,0" VerticalAlignment="Top" Width="116" FontFamily="Verdana" FontSize="14" FontWeight="Bold" Height="27"/>
+            <Label Content="Population:" HorizontalAlignment="Left" Margin="29,216,0,0" VerticalAlignment="Top" Width="116" FontFamily="Verdana" FontSize="14" FontWeight="Bold" Height="27"/>
+            <Label Content="Sub-Region:" HorizontalAlignment="Left" Margin="29,164,0,0" VerticalAlignment="Top" Width="116" FontFamily="Verdana" FontSize="14" FontWeight="Bold" Height="27"/>
+            <Label Content="Region:" HorizontalAlignment="Left" Margin="29,121,0,0" VerticalAlignment="Top" Width="116" FontFamily="Verdana" FontSize="14" FontWeight="Bold" Height="27"/>
+            <Label Content="Capital:" HorizontalAlignment="Left" Margin="29,72,0,0" VerticalAlignment="Top" Width="116" FontFamily="Verdana" FontSize="14" FontWeight="Bold" Height="27"/>
+            <Label x:Name="LabelName" Content="" HorizontalAlignment="Left" Margin="164,26,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.573,-0.291" Width="500" Height="27" FontFamily="Verdana" FontSize="14"/>
+            <Label x:Name="LabelCapital" Content="" HorizontalAlignment="Left" Margin="164,72,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.573,-0.291" Width="500" Height="27" FontFamily="Verdana" FontSize="14"/>
+            <Label x:Name="LabelRegion" Content="" HorizontalAlignment="Left" Margin="164,121,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.573,-0.291" Width="358" Height="27" FontFamily="Verdana" FontSize="14"/>
+            <Label x:Name="LabelSubRegion" Content="" HorizontalAlignment="Left" Margin="164,172,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.573,-0.291" Width="358" Height="27" FontFamily="Verdana" FontSize="14"/>
+            <Label x:Name="LabelPopulation" Content="" HorizontalAlignment="Left" Margin="164,216,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.573,-0.291" Width="358" Height="27" FontFamily="Verdana" FontSize="14"/>
+            <Label x:Name="LabelGini" Content="" HorizontalAlignment="Left" Margin="164,263,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.573,-0.291" Width="358" Height="27" FontFamily="Verdana" FontSize="14"/>
+            <Label x:Name="LabelFlag" Content="" HorizontalAlignment="Left" Margin="164,313,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.573,-0.291" Width="358" Height="27" FontFamily="Verdana" FontSize="14"/>
+            <Image x:Name="ImageFlagSelected"
+                       HorizontalAlignment="Left" 
+                       Height="212" 
+                       Margin="677,86,0,0" 
+                       VerticalAlignment="Top" 
+                       Width="238"/>
+            <!--ProgressBar Designer-->
+            <ProgressBar x:Name="ProgressBarStatus"
+                         HorizontalAlignment="Left" 
+                         Height="50" 
+                         Margin="178,408,0,0" 
+                         VerticalAlignment="Top" 
+                         Width="773" ValueChanged="ProgressBar_ValueChanged" />
+            <Image x:Name="ImageFlagsLoading" 
+               HorizontalAlignment="Left" 
+               Height="69" 
+               Margin="29,391,0,0" 
+               VerticalAlignment="Top" 
+               Width="137" RenderTransformOrigin="0.511,1.401"/>
+            <Label  x:Name="LabelResult"
+                HorizontalAlignment="Left" 
+                Margin="414,345,0,0" 
+                VerticalAlignment="Top" 
+                Height="58" 
+                Width="424" 
+                FontSize="14" 
+                FontFamily="Verdana" 
+                FontWeight="Bold">
+                <Label.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveCaptionTextColorKey}}"/>
+                </Label.Foreground>
+            </Label>
+        </Grid>
+        <!--ComboBox Designer-->
+        <ComboBox x:Name="ComboBoxNameCountries" 
+                  ItemsSource="{Binding countries}" 
+                  HorizontalAlignment="Left" 
+                  Margin="400,0,0,0" 
+                  VerticalAlignment="Top" 
+                  Width="449" 
+                  Height="35"
+                  FontFamily="Verdana" 
+                  FontSize="14" 
+                  IsEditable="True"
+                  TextSearch.TextPath="Nome" SelectionChanged="ComboBoxNameCountries_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding ImagePath}" 
+                                   Width="30" 
+                                   Height="30" 
+                                   HorizontalAlignment="Right"/>
+                        <TextBlock ><Run Text="{Binding name.common}" /></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Label x:Name="LabelStatus"
+            HorizontalAlignment="Left" 
+            Margin="400,40,0,0" 
+            VerticalAlignment="Top" 
+            Width="700" Height="32" 
+            FontSize="14" 
+            FontFamily="Verdana" 
+            FontWeight="Bold">
+            <Label.Foreground>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlLightLightColorKey}}"/>
+            </Label.Foreground>
+        </Label>
+    </Grid>
+</UserControl>

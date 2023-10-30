@@ -1,0 +1,63 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AppCountriesExplorerWpf.Views"
+             xmlns:Wpf="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf" x:Class="AppCountriesExplorerWpf.Views.UserControlMap"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" 
+             d:DesignWidth="1400"
+             Background="#1C2F3E">
+    <!--Grid Center Designer-->
+    <Grid Margin="0,0,0,190">
+        <ComboBox x:Name="ComboBoxNameCountries" 
+                ItemsSource="{Binding countries}" 
+                HorizontalAlignment="Left" 
+                Margin="400,15,0,0" 
+                VerticalAlignment="Top"
+                Width="482" Height="38" 
+                SelectionChanged="ComboBoxNameCountries_SelectionChanged" 
+                FontFamily="Verdana" 
+                FontSize="14" 
+                IsEditable="True"
+                TextSearch.TextPath="Nome">
+            <!--ComboBox Designer-->
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding ImagePath}" 
+                                Width="30" 
+                                Height="30" 
+                                HorizontalAlignment="Right"/>
+                        <TextBlock ><Run Text="{Binding name.common}" /></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Label x:Name="LabelStatus"
+                HorizontalAlignment="Left" 
+                Margin="400,53,0,0" 
+                VerticalAlignment="Top" 
+                Width="700" Height="29" 
+                FontSize="14" 
+                FontFamily="Verdana" 
+                FontWeight="Bold">
+            <Label.Foreground>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlLightLightColorKey}}"/>
+            </Label.Foreground>
+        </Label>
+        <Label x:Name="LabelResult"  HorizontalAlignment="Left" Margin="906,10,0,0" VerticalAlignment="Top" Height="38" Width="466" FontFamily="Verdana" FontSize="14" FontWeight="Bold">
+            <Label.Foreground>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlLightLightColorKey}}"/>
+            </Label.Foreground>
+        </Label>
+        <!--WebView Start-->
+        <Wpf:WebView2 x:Name="WebView"   
+                               HorizontalAlignment="Left" 
+                               Height="480" Margin="26,87,0,0" 
+                               VerticalAlignment="Top" 
+                               Width="1173" 
+                               NavigationCompleted="WebView_NavegationCompleted"/>
+    </Grid>
+</UserControl>

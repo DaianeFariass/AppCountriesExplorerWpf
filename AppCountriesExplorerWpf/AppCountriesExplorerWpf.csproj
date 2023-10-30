@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="desligar.png" />
+    <None Remove="explorar.png" />
+    <None Remove="globo.png" />
+    <None Remove="mapa.png" />
+    <None Remove="mundo.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1829-prerelease" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.117" />
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.117" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="desligar.png" />
+    <Resource Include="explorar.png" />
+    <Resource Include="globo.png" />
+    <Resource Include="mapa.png" />
+    <Resource Include="mundo.jpg" />
+  </ItemGroup>
+
+</Project>
